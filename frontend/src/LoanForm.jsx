@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import axios from "axios"
 
 const LoanForm = () => {
   const [formData, setFormData] = useState({
-    loanType: '',
+    // loanType: '',
     user: "",
     loanAmount: '',
     loanTenure: '',
