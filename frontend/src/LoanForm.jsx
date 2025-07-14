@@ -3,21 +3,21 @@ import React, { useState } from 'react';
 const LoanForm = () => {
   const [formData, setFormData] = useState({
     loanType: '',
-    amount: '',
-    tenure: '',
+    user: "",
+    loanAmount: '',
+    loanTenure: '',
     firstName: '',
     lastName: '',
     email: '',
-    phone: '',
+    phoneNo: '',
     employmentStatus: '',
     monthlyIncome: '',
-    panNumber: '',
-    aadhaarNumber: '',
     address: '',
     city: '',
     state: '',
-    
-    agreeTerms: false
+    pincode: "",
+    nic: "",
+  
   });
 
   const handleChange = (e) => {
@@ -28,10 +28,12 @@ const LoanForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Add your form submission logic here
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}loan/`,
+      formData
+    )
   };
 
   return (
@@ -187,6 +189,34 @@ const LoanForm = () => {
                     id="email"
                     name="email"
                     value={formData.email}
+                    onChange={handleChange}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="pincode" className="block text-sm font-medium text-gray-700 mb-1">
+                    pincode <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="pincode"
+                    id="pincode"
+                    name="pincode"
+                    value={formData.pincode}
+                    onChange={handleChange}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
+                    required
+                  />
+                </div>
+                       <div>
+                  <label htmlFor="nic" className="block text-sm font-medium text-gray-700 mb-1">
+                    nic <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="nic"
+                    id="nic"
+                    name="nic"
+                    value={formData.nic}
                     onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
                     required
