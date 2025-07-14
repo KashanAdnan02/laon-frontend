@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import axios from "axios"
+import { useLocation } from 'react-router-dom';
 
 const LoanForm = () => {
+  const location = useLocation()
+
+  console.log(location.state)
+  const user = localStorage.getItem("user")
+  const parseUser = JSON.parse(user)
+  console.log(parseUser._id)
   const [formData, setFormData] = useState({
-    // loanType: '',
-    user: "",
+    loanType: `${location.state}`,
+    user: parseUser._id,
     loanAmount: '',
     loanTenure: '',
     firstName: '',
@@ -69,26 +76,7 @@ const LoanForm = () => {
             <div className="mb-10">
               <h2 className="text-xl font-bold text-gray-800 mb-6 border-b pb-2">Loan Details</h2>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="loanType" className="block text-sm font-medium text-gray-700 mb-1">
-                    Loan Type <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    id="loanType"
-                    name="loanType"
-                    value={formData.loanType}
-                    onChange={handleChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
-                    required
-                  >
-                    <option value="">Select loan type</option>
-                    <option value="personal">Personal Loan</option>
-                    <option value="business">Business Loan</option>
-                    <option value="education">Education Loan</option>
-                    <option value="auto">Auto Loan</option>
-                    <option value="home">Home Loan</option>
-                  </select>
-                </div>
+   
 
                 <div>
                   <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
@@ -101,8 +89,8 @@ const LoanForm = () => {
                     <input
                       type="number"
                       id="amount"
-                      name="amount"
-                      value={formData.amount}
+                      name="loanAmount"
+                      value={formData.loanAmount}
                       onChange={handleChange}
                       className="block w-full pl-7 pr-12 rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500 p-3 border"
                       placeholder="50,000"
@@ -121,8 +109,8 @@ const LoanForm = () => {
                   <input
                     type="number"
                     id="tenure"
-                    name="tenure"
-                    value={formData.tenure}
+                    name="loanTenure"
+                    value={formData.loanTenure}
                     onChange={handleChange}
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-3 border"
                     placeholder="12"

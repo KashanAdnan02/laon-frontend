@@ -47,7 +47,7 @@ const Services = () => {
                 <h3 className="text-xl font-semibold mb-2 text-gray-800">{service.loanType}</h3>
                 <p className="text-gray-600 text-sm mb-4">{service.pusrpose}</p>
                 <button className="bg-gray-100 text-gray-800 border border-gray-300 px-4 py-2 rounded-full hover:bg-green-100 transition">
-                  <Link to="/loanform">Apply now</Link>
+                  <Link state={service._id} to="/loanform">Apply now</Link>
                 </button>
               </div>
             ))}
