@@ -15,7 +15,7 @@ import LoanForm from './LoanForm'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import { AuthGaurd } from './route/AuthGaurd'
-import { IsLogin } from './route/isLogin'
+import { IsLogin } from './route/IsLogin'
 
 function App() {
 
