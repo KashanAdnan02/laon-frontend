@@ -46,7 +46,7 @@ const Signup = () => {
     const imageData = new FormData()
     imageData.append('image',imageFile )
 
-    const res = await axios.post('http://localhost:8080/upload',imageData)
+    const res = await axios.post(`${process.env.BASE_URL}/upload`,imageData)
     console.log(res)
 
     imageurl = res.data.imageUrl
@@ -57,7 +57,7 @@ const Signup = () => {
     })
 
 
-    const response = await axios.post('http://localhost:8080/api/register',sendData )
+    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/register`,sendData )
     console.log(response)
     if (response.status == 201) {
       navigate('/signin')

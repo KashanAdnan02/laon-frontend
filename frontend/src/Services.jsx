@@ -18,7 +18,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/loanType') // change base URL if needed
+      .get(`${import.meta.env.VITE_BASE_URL}loanType`) // change base URL if needed
       .then((res) => {
         setServices(res.data);
         setLoading(false);
