@@ -46,7 +46,7 @@ const Signup = () => {
     const imageData = new FormData()
     imageData.append('image',imageFile )
 
-    const res = await axios.post(`${process.env.BASE_URL}/upload`,imageData)
+    const res = await axios.post(`${import.meta.env.VITE_BASE_URL}upload`,imageData)
     console.log(res)
 
     imageurl = res.data.imageUrl
