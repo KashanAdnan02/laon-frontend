@@ -16,6 +16,8 @@ import Signup from './pages/Signup'
 import Signin from './pages/Signin'
 import { AuthGaurd } from './route/AuthGaurd'
 import { IsLogin } from './route/IsLogin'
+import Product from './pages/Product'
+import ProductDetail from './pages/ProductDetail'
 
 function App() {
 
@@ -34,6 +36,10 @@ function App() {
           <Route path='/about' element={<><Navbar />,<About />,<Footer /></>}></Route>
           <Route path="/contactus" element={<><Navbar />,<Contactus />,<Footer /></>} />
           <Route path='/loanform' element={<><Navbar />,<LoanForm />,<Footer /></>} />
+          <Route path='/product' element={<><Navbar />,<Product />,<Footer /></>} />
+          <Route path='/product/:id' element={<><Navbar />,<ProductDetail />,<Footer /></>} />
+
+
         </Route>
         <Route element={<IsLogin /> }>
       
