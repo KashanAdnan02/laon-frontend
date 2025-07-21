@@ -15,6 +15,8 @@ const Product = () => {
   const [productData, setProductData] = useState([]);
   const [imageFile, setImageFile] = useState(null);
 
+  const [search, setSearch] = useState("")
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -49,6 +51,16 @@ const Product = () => {
       console.error('Error uploading or submitting product:', err);
     }
   };
+
+ const handleSearch = (value) => {
+  setSearch(value);
+
+};
+
+const filterProduct = productData.filter(product => (
+  product.name.includes(search)
+))
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -97,10 +109,15 @@ const Product = () => {
         </form>
       </div>
 
+
+      <div>
+        <input value={search} onChange={(e) => handleSearch(e.target.value)} className='h-[60px] w-[250px] rounded border-2 border-zinc-300 p-4 mt-2 ' type="text" placeholder='Search' />
+      </div>
+
       {/* Grid of Product Cards */}
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {productData &&
-          productData.map((item) => (
+        {filterProduct &&
+          filterProduct.map((item) => (
             <ProductCard key={item._id} product={item} />
           ))}
       </div>
